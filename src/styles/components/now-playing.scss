@@ -6,32 +6,29 @@
  */
 .now-playing {
   background-color: var(--colour-background-now-playing);
-  color: rgb(240, 240, 240);
+  color: var(--color-text-primary);
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   height: 100%;
-  padding: 0%;
-  margin: 0%;
+  padding: var(--spacing-l);
   width: 100%;
 
   &__cover,
   &__details {
     padding: var(--spacing-m);
     text-align: center;
-    width: 50%;
-    max-width: 960px;
+    width: 100%;
   }
 
   &__cover {
-    max-width: 900px;
-    padding: 0%;
+    max-width: 400px;
   }
 
   &__image {
     box-shadow: 1px 1px 16px -2px rgba(0, 0, 0, .3);
-    height: 100%;
+    height: auto;
+    max-width: 60vw;
     width: 100%;
-    object-fit: fill;
   }
 
   &__details {
