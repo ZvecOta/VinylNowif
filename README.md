@@ -18,10 +18,15 @@ So, i ended up upcycling a 16:9 laptop display instead. Insert image of when i'm
 Besides changing the styling and size of the elements, i also made the background a bit more fun to look at, by using the album art in a blurred version as the background.
 
 The project is tested with the following resolutions:
+
 3840x2160 - 4K  
+
 3440x1440 - 1440p Ultrawide
+
 1920x1080 - FHD
+
 1080x1080 - FHD 1:1
+
 480x320 - Raspberry Pi 4 Display
 
 ### 1080x1080 Preview
