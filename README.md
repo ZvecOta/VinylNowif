@@ -2,11 +2,13 @@
 
 A fork of [Nowify](https://github.com/jonashcroft/Nowify) that focuses on the artwork, similar to displaying a vinyl record.
 
-# Disclaimer! 
+## Disclaimer! 
 Before we start, i have absolutely no idea what i'm doing.
 I've never developed or made anything besides basic Python scripts before, and i have never used GitHub either.
 A combination of basic knowledge, ChatGPT, and 6 months of web dev education a decade ago i pretend to remember, we ended up here.
 The code is most likely a mess, but hey it works for what i needed it to, so i'm sharing it here if anyone else can use it.
+
+## About
 
 The project is supposed to be responsive to most standard sizes and aspect ratios. Referring to the paragraph above, i'm sure it will act weird at some resolutions and aspect ratios.
 Originally i wanted a 1:1 monitor to display like a vinyl, only to realize that didn't really exist.
