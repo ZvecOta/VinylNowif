@@ -13,7 +13,7 @@ The code is most likely a mess, but hey it works for what i needed it to, so i'm
 The project is supposed to be responsive to most standard sizes and aspect ratios. Referring to the paragraph above, i'm sure it will act weird at some resolutions and aspect ratios.
 Originally i wanted a 1:1 monitor to display like a vinyl, only to realize that didn't really exist.
 Then my plan was a 4:3, only to find out there are not many decent modern quality 4:3 monitors.
-So, i ended up upcycling a 16:9 instead laptop display instead. Insert image of when i'm finally finished with the display :)
+So, i ended up upcycling a 16:9 laptop display instead. Insert image of when i'm finally finished with the display :)
 
 Besides changing the styling and size of the elements, i also made the background a bit more fun to look at, by using the album art in a blurred version as the background.
 
