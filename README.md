@@ -39,7 +39,6 @@ The project is tested with the following resolutions:
 ![480x320 Preview](assets/480x320.png?raw=true "Nowify-Vinyl preview image")
 
 ## To-do
-- Long song titles becomes 2 lines and pushes out of the bottom. Make it scroll or cut off.
 - Is there a way to upscale the 640px album art dynamically for better quality/perceived resolution
 - Settings panel for column/row displaying, upscaled art, background colors etc.
 
