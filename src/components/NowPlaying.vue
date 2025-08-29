@@ -1,20 +1,28 @@
 <template>
   <div id="app" style="overflow: hidden; width: 100vw; height: 100vh; position: relative;">
-    <!-- Background Div for Album Art -->
+    <!-- Background Div -->
     <div
       class="now-playing__background"
-      :style="{ 
-        backgroundImage: 'url(' + player.trackAlbum.image + ')', 
-        filter: 'blur(10vmin) saturate(200%) contrast(100%)', 
-        backgroundSize: 'cover', 
-        backgroundPosition: 'center center', 
-        backgroundRepeat: 'no-repeat',
-        position: 'absolute', 
-        width: '100%', 
-        height: '100%',
-        transform: 'scale(1.4)',
-        zIndex: -1
-      }"
+      :style="player.playing 
+        ? { 
+            backgroundImage: 'url(' + player.trackAlbum.image + ')',
+            filter: 'blur(10vmin) saturate(200%) contrast(100%)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat',
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            transform: 'scale(1.4)',
+            zIndex: -1
+          } 
+        : { 
+            backgroundColor: 'black',
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            zIndex: -1
+          }"
     >
     </div>
 
@@ -36,6 +44,7 @@
     </div>
   </div>
 </template>
+
 
 <script>
 import * as Vibrant from 'node-vibrant'
