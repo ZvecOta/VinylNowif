@@ -1,10 +1,10 @@
 <template>
-  <div id="app" style="overflow: hidden; width: 100vw; height: 100vh; position: relative;">
-    <!-- Background Div -->
+  <div id="app" style="overflow:hidden; width:100vw; height:100vh; position:relative;">
+    <!-- Hintergrund: Album oder Schwarz -->
     <div
       class="now-playing__background"
-      :style="player.playing 
-        ? { 
+      :style="player.playing
+        ? {
             backgroundImage: 'url(' + player.trackAlbum.image + ')',
             filter: 'blur(10vmin) saturate(200%) contrast(100%)',
             backgroundSize: 'cover',
@@ -15,35 +15,37 @@
             height: '100%',
             transform: 'scale(1.4)',
             zIndex: -1
-          } 
-        : { 
+          }
+        : {
             backgroundColor: 'black',
             position: 'absolute',
             width: '100%',
             height: '100%',
             zIndex: -1
           }"
-    >
+    ></div>
+
+    <!-- Vollbild Cover + Text unten -->
+    <div v-if="player.playing" class="cover-wrap">
+      <img
+        :src="player.trackAlbum.image"
+        :alt="player.trackTitle"
+        class="cover-img"
+      />
+      <div class="cover-gradient"></div>
+      <div class="track-meta">
+        <h1 class="track-title">{{ player.trackTitle }}</h1>
+        <h2 class="track-artists">{{ getTrackArtists }}</h2>
+      </div>
     </div>
 
-    <div v-if="player.playing" class="now-playing" :class="getNowPlayingClass()">
-      <div class="now-playing__cover">
-        <img
-          :src="player.trackAlbum.image"
-          :alt="player.trackTitle"
-          class="now-playing__image"
-        />
-      </div>
-      <div class="now-playing__details">
-        <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
-        <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
-      </div>
-    </div>
-    <div v-else class="now-playing" :class="getNowPlayingClass()">
+    <!-- Idle -->
+    <div v-else class="now-playing now-playing--idle">
       <h1 class="now-playing__idle-heading"></h1>
     </div>
   </div>
 </template>
+
 
 
 <script>
@@ -330,3 +332,56 @@ export default {
 </script>
 
 <style src="@/styles/components/now-playing.scss" lang="scss" scoped></style>
+
+<style lang="scss">
+.cover-wrap {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cover-gradient {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 35vh;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.55) 40%,
+    rgba(0,0,0,0.85) 100%
+  );
+}
+
+.track-meta {
+  position: absolute;
+  left: 2rem;
+  right: 2rem;
+  bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: var(--color-text-primary, #fff);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+
+.track-title {
+  margin: 0;
+  font-weight: 800;
+  font-size: clamp(20px, 4vw, 44px);
+}
+
+.track-artists {
+  margin: 0;
+  opacity: 0.95;
+  font-size: clamp(14px, 2vw, 22px);
+}
+</style>
