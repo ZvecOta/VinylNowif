@@ -23,8 +23,7 @@
             height: '100%',
             zIndex: -1
           }"
-    >
-    </div>
+    ></div>
 
     <div v-if="player.playing" class="now-playing" :class="getNowPlayingClass()">
       <div class="now-playing__cover">
@@ -35,15 +34,18 @@
         />
       </div>
       <div class="now-playing__details">
-        <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
-        <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
+        <!-- farbiger Text -->
+        <h1 class="now-playing__track coloured-text">{{ player.trackTitle }}</h1>
+        <h2 class="now-playing__artists coloured-text">{{ getTrackArtists }}</h2>
       </div>
     </div>
+
     <div v-else class="now-playing" :class="getNowPlayingClass()">
-      <h1 class="now-playing__idle-heading"></h1>
+      <h1 class="now-playing__idle-heading coloured-text"></h1>
     </div>
   </div>
 </template>
+
 
 <script>
 import * as Vibrant from 'node-vibrant'
@@ -330,48 +332,13 @@ export default {
 
 <style src="@/styles/components/now-playing.scss" lang="scss" scoped></style>
 
-.stage {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;   /* vertikal zentriert */
-  justify-content: center; /* horizontal zentriert */
+.coloured-text {
+  color: var(--color-text-primary, #fff); /* fallback weiß */
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6); /* für bessere Lesbarkeit */
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Cover: so groß wie möglich, ohne Beschnitt, bleibt quadratisch */
-.cover-img {
-  display: block;
-  height: min(85vh, 90vmin);  /* maximale Höhe der Seite, mit etwas Puffer für Text */
-  max-width: 90vw;            /* passt sich schmalen Screens an */
-  aspect-ratio: 1 / 1;        /* quadratisch */
-  width: auto;                /* Breite ergibt sich aus Höhe */
-  object-fit: contain;        /* kein Zuschnitt */
-  border-radius: 8px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-}
-
-.track-meta {
+.now-playing__details {
+  margin-top: 1rem;
   text-align: center;
-  color: var(--color-text-primary, #fff);
-  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
 
-.track-title {
-  margin: 0;
-  font-weight: 800;
-  font-size: clamp(20px, 4vw, 40px);
-}
-
-.track-artists {
-  margin: 0;
-  opacity: 0.9;
-  font-size: clamp(14px, 2vw, 22px);
-}
