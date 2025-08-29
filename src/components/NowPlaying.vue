@@ -25,14 +25,13 @@
           }"
     ></div>
 
-    <!-- Vollbild Cover + Text unten -->
+    <!-- Cover quadratisch + Text zentriert darunter -->
     <div v-if="player.playing" class="cover-wrap">
       <img
         :src="player.trackAlbum.image"
         :alt="player.trackTitle"
         class="cover-img"
       />
-      <div class="cover-gradient"></div>
       <div class="track-meta">
         <h1 class="track-title">{{ player.trackTitle }}</h1>
         <h2 class="track-artists">{{ getTrackArtists }}</h2>
@@ -45,6 +44,7 @@
     </div>
   </div>
 </template>
+
 
 
 
@@ -333,55 +333,39 @@ export default {
 
 <style src="@/styles/components/now-playing.scss" lang="scss" scoped></style>
 
-<style lang="scss">
 .cover-wrap {
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontal zentriert */
+  justify-content: center; /* vertikal mittig */
+  gap: 1rem;
 }
 
 .cover-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.cover-gradient {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 35vh;
-  background: linear-gradient(
-    180deg,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0.55) 40%,
-    rgba(0,0,0,0.85) 100%
-  );
+  width: 60vmin;   /* quadratisch */
+  height: 60vmin;
+  object-fit: contain; /* Bild wird vollständig angezeigt */
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
 
 .track-meta {
-  position: absolute;
-  left: 2rem;
-  right: 2rem;
-  bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  text-align: center;
   color: var(--color-text-primary, #fff);
-  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
 
 .track-title {
   margin: 0;
   font-weight: 800;
-  font-size: clamp(20px, 4vw, 44px);
+  font-size: clamp(20px, 4vw, 40px);
 }
 
 .track-artists {
   margin: 0;
-  opacity: 0.95;
+  opacity: 0.9;
   font-size: clamp(14px, 2vw, 22px);
 }
-</style>
