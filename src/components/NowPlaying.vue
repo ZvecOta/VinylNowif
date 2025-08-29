@@ -56,8 +56,8 @@ export default {
       pollPlaying: '',
       playerResponse: {},
       playerData: this.getEmptyPlayer(),
-      colourPalette: '#000000',
-      swatches: [],
+      colourPalette: '',
+      swatches: [#000000],
       squareSize: 0
     }
   },
