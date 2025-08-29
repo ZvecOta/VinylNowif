@@ -1,10 +1,10 @@
 <template>
-  <div id="app" style="overflow:hidden; width:100vw; height:100vh; position:relative;">
-    <!-- Hintergrund: Album oder Schwarz -->
+  <div id="app" style="overflow: hidden; width: 100vw; height: 100vh; position: relative;">
+    <!-- Background Div -->
     <div
       class="now-playing__background"
-      :style="player.playing
-        ? {
+      :style="player.playing 
+        ? { 
             backgroundImage: 'url(' + player.trackAlbum.image + ')',
             filter: 'blur(10vmin) saturate(200%) contrast(100%)',
             backgroundSize: 'cover',
@@ -15,41 +15,35 @@
             height: '100%',
             transform: 'scale(1.4)',
             zIndex: -1
-          }
-        : {
+          } 
+        : { 
             backgroundColor: 'black',
             position: 'absolute',
             width: '100%',
             height: '100%',
             zIndex: -1
           }"
-    ></div>
-
-<!-- Cover + Text zentriert -->
-<div v-if="player.playing" class="stage">
-  <div class="content">
-    <img
-      :src="player.trackAlbum.image"
-      :alt="player.trackTitle"
-      class="cover-img"
-    />
-    <div class="track-meta">
-      <h1 class="track-title">{{ player.trackTitle }}</h1>
-      <h2 class="track-artists">{{ getTrackArtists }}</h2>
+    >
     </div>
-  </div>
-</div>
 
-
-    <!-- Idle -->
-    <div v-else class="now-playing now-playing--idle">
+    <div v-if="player.playing" class="now-playing" :class="getNowPlayingClass()">
+      <div class="now-playing__cover">
+        <img
+          :src="player.trackAlbum.image"
+          :alt="player.trackTitle"
+          class="now-playing__image"
+        />
+      </div>
+      <div class="now-playing__details">
+        <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
+        <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
+      </div>
+    </div>
+    <div v-else class="now-playing" :class="getNowPlayingClass()">
       <h1 class="now-playing__idle-heading"></h1>
     </div>
   </div>
 </template>
-
-
-
 
 <script>
 import * as Vibrant from 'node-vibrant'
