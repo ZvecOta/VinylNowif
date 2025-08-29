@@ -23,7 +23,8 @@
             height: '100%',
             zIndex: -1
           }"
-    ></div>
+    >
+    </div>
 
     <div v-if="player.playing" class="now-playing" :class="getNowPlayingClass()">
       <div class="now-playing__cover">
@@ -34,14 +35,12 @@
         />
       </div>
       <div class="now-playing__details">
-        <!-- farbiger Text -->
-        <h1 class="now-playing__track coloured-text">{{ player.trackTitle }}</h1>
-        <h2 class="now-playing__artists coloured-text">{{ getTrackArtists }}</h2>
+        <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
+        <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
       </div>
     </div>
-
     <div v-else class="now-playing" :class="getNowPlayingClass()">
-      <h1 class="now-playing__idle-heading coloured-text"></h1>
+      <h1 class="now-playing__idle-heading"></h1>
     </div>
   </div>
 </template>
@@ -331,14 +330,3 @@ export default {
 </script>
 
 <style src="@/styles/components/now-playing.scss" lang="scss" scoped></style>
-
-.coloured-text {
-  color: var(--color-text-primary, #fff); /* fallback weiß */
-  text-shadow: 0 2px 6px rgba(0,0,0,0.6); /* für bessere Lesbarkeit */
-}
-
-.now-playing__details {
-  margin-top: 1rem;
-  text-align: center;
-}
-
