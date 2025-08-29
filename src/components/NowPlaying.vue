@@ -333,23 +333,32 @@ export default {
 
 <style src="@/styles/components/now-playing.scss" lang="scss" scoped></style>
 
-.cover-wrap {
+.stage {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;   /* vertikal zentriert */
+  justify-content: center; /* horizontal zentriert */
+}
+
+.content {
   display: flex;
   flex-direction: column;
-  align-items: center; /* horizontal zentriert */
-  justify-content: center; /* vertikal mittig */
+  align-items: center;
   gap: 1rem;
 }
 
+/* Cover: so groß wie möglich, ohne Beschnitt, bleibt quadratisch */
 .cover-img {
-  width: 60vmin;   /* quadratisch */
-  height: 60vmin;
-  object-fit: contain; /* Bild wird vollständig angezeigt */
+  display: block;
+  height: min(85vh, 90vmin);  /* maximale Höhe der Seite, mit etwas Puffer für Text */
+  max-width: 90vw;            /* passt sich schmalen Screens an */
+  aspect-ratio: 1 / 1;        /* quadratisch */
+  width: auto;                /* Breite ergibt sich aus Höhe */
+  object-fit: contain;        /* kein Zuschnitt */
   border-radius: 8px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
 }
 
 .track-meta {
