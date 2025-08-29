@@ -25,18 +25,21 @@
           }"
     ></div>
 
-    <!-- Cover quadratisch + Text zentriert darunter -->
-    <div v-if="player.playing" class="cover-wrap">
-      <img
-        :src="player.trackAlbum.image"
-        :alt="player.trackTitle"
-        class="cover-img"
-      />
-      <div class="track-meta">
-        <h1 class="track-title">{{ player.trackTitle }}</h1>
-        <h2 class="track-artists">{{ getTrackArtists }}</h2>
-      </div>
+<!-- Cover + Text zentriert -->
+<div v-if="player.playing" class="stage">
+  <div class="content">
+    <img
+      :src="player.trackAlbum.image"
+      :alt="player.trackTitle"
+      class="cover-img"
+    />
+    <div class="track-meta">
+      <h1 class="track-title">{{ player.trackTitle }}</h1>
+      <h2 class="track-artists">{{ getTrackArtists }}</h2>
     </div>
+  </div>
+</div>
+
 
     <!-- Idle -->
     <div v-else class="now-playing now-playing--idle">
