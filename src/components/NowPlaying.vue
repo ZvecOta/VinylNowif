@@ -57,7 +57,7 @@ export default {
       playerResponse: {},
       playerData: this.getEmptyPlayer(),
       colourPalette: '',
-      swatches: [#000000],
+      swatches: [],
       squareSize: 0
     }
   },
